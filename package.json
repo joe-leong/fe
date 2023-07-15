@@ -5,7 +5,8 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "lint": "markdownlint index.md"
+    "lint": "markdownlint index.md",
+    "commit": "git-cz"
   },
   "keywords": [
     "fe",
@@ -14,6 +15,7 @@
   "author": "joe",
   "license": "ISC",
   "devDependencies": {
+    "git-cz": "^4.9.0",
     "markdownlint": "^0.29.0",
     "vuepress": "^1.9.9",
     "vuepress-plugin-one-click-copy": "^1.0.6",
