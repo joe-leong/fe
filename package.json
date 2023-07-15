@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "joe's fe doc",
   "scripts": {
+    "init": "pnpm install",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lint": "markdownlint index.md",
