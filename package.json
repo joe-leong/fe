@@ -1,0 +1,22 @@
+{
+  "name": "fe",
+  "version": "1.0.0",
+  "description": "joe's fe doc",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "lint": "markdownlint index.md"
+  },
+  "keywords": [
+    "fe",
+    "joe"
+  ],
+  "author": "joe",
+  "license": "ISC",
+  "devDependencies": {
+    "markdownlint": "^0.29.0",
+    "vuepress": "^1.9.9",
+    "vuepress-plugin-one-click-copy": "^1.0.6",
+    "vuepress-plugin-zooming": "^1.1.8"
+  }
+}
