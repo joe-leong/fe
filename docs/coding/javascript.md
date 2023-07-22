@@ -1,3 +1,15 @@
+---
+title: ECMAscript 专题
+categories:
+  - 前端框架
+  - react
+tags:
+  - 编码规范
+author:
+  name: joe
+  link: https://github.com/joe-leong/fe
+---
+
 # JavaScript
 
 ## This 指向
@@ -111,7 +123,9 @@ function compose(...args) {
 
 ## async defer prefetch preload
 
-1.`async`立即下载（异步，不会阻塞文档解析），下载完立刻执行 2. `defer`立即下载（异步，不会阻塞文档解析），文档解析完后立即执行 3.`prefetch`预下载，在未来的某个页面可能会执行
-4、`preload`预下载，需要的时候立即执行
+1. `async`立即下载（异步，不会阻塞文档解析），下载完立刻执行，无序
+2. `defer`立即下载（异步，不会阻塞文档解析），文档解析完后立即执行，按照加载顺序执行
+3. .`prefetch`预下载，在未来的某个页面可能会执行
+4. `preload`预下载，需要的时候立即执行，
 
 🚧 `持续更新` 🚧

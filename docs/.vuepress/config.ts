@@ -14,6 +14,9 @@ export default defineConfig4CustomTheme({
     repo: "joe-leong/fe",
     searchMaxSuggestions: 10,
     docsDir: "docs",
+    editLinkText: "为该章节纠错",
+    editLinks: true,
+    lastUpdated: "上次更新",
     nav: [
       {
         text: "首页",
@@ -53,32 +56,19 @@ export default defineConfig4CustomTheme({
     sidebar: [
       {
         title: "前端框架",
+        collapsable: true,
         children: [
-          {
-            title: "React",
-            path: "/frame/react.md",
-          },
-          {
-            title: "Vue",
-            path: "/frame/vue.md",
-          },
+          ["/frame/react.md", "React"],
+          ["/frame/vue.md", "Vue"],
         ],
       },
       {
         title: "前端基础",
+        collapsable: true,
         children: [
-          {
-            title: "CSS",
-            path: "/coding/css.md",
-          },
-          {
-            title: "JavaScript",
-            path: "/coding/javascript.md",
-          },
-          {
-            title: "数据结构",
-            path: "/coding/datastructure.md",
-          },
+          ["/coding/css.md", "CSS"],
+          ["/coding/javascript.md", "JavaScript"],
+          ["/coding/datastructure.md", "数据结构"],
         ],
       },
     ],
