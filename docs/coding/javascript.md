@@ -23,7 +23,7 @@ author:
     - 加载顺序，按照在代码中出现的顺序加载，也可以动态加载
     - 导入的值是拷贝的，可以修改拷贝值，不会引起变量污染
   - 基本语法
-    - 暴露模块：module.exports = value || exports.xxx = value，exports引用的其实是module.exports
+    - 暴露模块：module.exports = value || exports.xxx = value，exports 引用的其实是 module.exports
     - 引入模块：require(xxx)
 
 - AMD
@@ -37,9 +37,9 @@ author:
     - 定义没有依赖的模块
 
       ```js
-      define(function(){
-        return xxx
-      })
+      define(function () {
+        return xxx;
+      });
       ```
 
     - 定义有依赖的模块
@@ -53,9 +53,9 @@ author:
     - 引入模块，依赖前置
 
       ```js
-      require(['m1','m2'],function(m1,m2){
-        xxx
-      })
+      require(["m1", "m2"], function (m1, m2) {
+        xxx;
+      });
       ```
 
     - Eg：[require.js](https://github.com/requirejs/requirejs)
@@ -73,10 +73,10 @@ author:
     - 定义没有依赖的模块
 
       ```js
-      define(function(resuire,exports,module){
-        exports.xxx = value
-        module.exports = value
-      })
+      define(function (resuire, exports, module) {
+        exports.xxx = value;
+        module.exports = value;
+      });
       ```
 
     - 定义有依赖的模块
@@ -97,7 +97,7 @@ author:
 - UMD
 
   - 定义
-    - JavaScript通用模块，同时满足CMD。AMD，CommonJS标准
+    - JavaScript 通用模块，同时满足 CMD。AMD，CommonJS 标准
 
 - ESM
 
@@ -123,11 +123,9 @@ author:
     - 引入模块
 
       ```js
-      import {xxx} from 'module' // import concrete
-      import a from 'module' // import default
+      import { xxx } from "module"; // import concrete
+      import a from "module"; // import default
       ```
-
-      
 
 ## This 指向
 
@@ -246,5 +244,3 @@ function compose(...args) {
 4. `preload`预下载，需要的时候立即执行，
 
 🚧 `持续更新` 🚧
-
-[https://github.com/seajs/seajs]: 
