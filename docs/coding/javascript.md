@@ -12,6 +12,123 @@ author:
 
 # JavaScript
 
+## 模块化规范
+
+- CommonJS
+
+  - 定义
+    - 同步加载，模块加载完成才能继续执行后面的代码
+    - 所有代码运行在模块作用域，不会污染全局
+    - 模块可以多次加载，但是只在第一次加载时运行一次，之后的加兹安都引用缓存的结果。如果想再次运行，需要清除缓存
+    - 加载顺序，按照在代码中出现的顺序加载，也可以动态加载
+    - 导入的值是拷贝的，可以修改拷贝值，不会引起变量污染
+  - 基本语法
+    - 暴露模块：module.exports = value || exports.xxx = value，exports引用的其实是module.exports
+    - 引入模块：require(xxx)
+
+- AMD
+
+  - 定义
+
+    - 非同步加载模块，允许指定回调函数
+
+  - 基本语法
+
+    - 定义没有依赖的模块
+
+      ```js
+      define(function(){
+        return xxx
+      })
+      ```
+
+    - 定义有依赖的模块
+
+      ```js
+      define(['module1','module2']。function(m1,m2){
+        return xxx
+      })
+      ```
+
+    - 引入模块，依赖前置
+
+      ```js
+      require(['m1','m2'],function(m1,m2){
+        xxx
+      })
+      ```
+
+    - Eg：[require.js](https://github.com/requirejs/requirejs)
+
+- CMD
+
+  - 定义
+
+    - 专门用于浏览器
+    - 异步加载，使用时加载
+    - 依赖就近
+
+  - 基本语法
+
+    - 定义没有依赖的模块
+
+      ```js
+      define(function(resuire,exports,module){
+        exports.xxx = value
+        module.exports = value
+      })
+      ```
+
+    - 定义有依赖的模块
+
+      ```js
+      define(function(require,exports,module){
+        // 同步引入
+        let m1 = require('./module')
+        // 异步引入
+        require.async('./module',function(m2){
+          ...
+        })
+      })
+      ```
+
+    - eg：[sea.js](https://github.com/seajs/seajs)
+
+- UMD
+
+  - 定义
+    - JavaScript通用模块，同时满足CMD。AMD，CommonJS标准
+
+- ESM
+
+  - 定义
+
+    - 静态化
+    - 编译时
+    - 值引用
+
+  - 基本语法
+
+    - 定义模块
+
+      ```js
+      export const xxx = value
+      export {
+      	xxx:value,
+        xxx:value
+      }
+      export default xxx
+      ```
+
+    - 引入模块
+
+      ```js
+      import {xxx} from 'module' // import concrete
+      import a from 'module' // import default
+      ```
+
+      
+
 ## This 指向
 
 - 普通调用
@@ -129,3 +246,5 @@ function compose(...args) {
 4. `preload`预下载，需要的时候立即执行，
 
 🚧 `持续更新` 🚧
+
+[https://github.com/seajs/seajs]: 
