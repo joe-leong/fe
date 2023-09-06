@@ -29,3 +29,14 @@ jobs:
           BRANCH: gh-pages
           FOLDER: docs/.vuepress/dist
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - name: CINotify Email
+        # You may pin to the exact commit or the version.
+        # uses: cinotify/github-action@feaa5fed1588048bd8e14d6b9c26964f9d164a25
+        uses: cinotify/github-action@v1.1.2
+        with:
+          # Recipient email address
+          to: zdnf_lgq@163.com
+          # Email subject
+          subject: fe docs deploy notify
+          # Email body
+          body: fe docs deploy successfully
