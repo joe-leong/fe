@@ -17,6 +17,7 @@ export default defineConfig4CustomTheme({
     editLinkText: "为该章节纠错",
     editLinks: true,
     lastUpdated: "上次更新",
+    smoothScroll: true,
     nav: [
       {
         text: "首页",
@@ -64,6 +65,10 @@ export default defineConfig4CustomTheme({
             link: "/coding/javascript.md",
           },
           {
+            text: "http",
+            link: "/coding/HTTP.md",
+          },
+          {
             text: "数据结构",
             link: "/coding/datastructure.md",
           },
@@ -74,34 +79,36 @@ export default defineConfig4CustomTheme({
         link: "https://joe-leong.github.io/q-hooks",
       },
     ],
-    sidebar: [
-      {
-        title: "前端框架",
-        collapsable: true,
-        children: [
-          ["/frame/react.md", "React"],
-          ["/frame/vue3.x.md", "Vue3"],
-          ["/frame/vue2.x.md", "Vue2"],
-        ],
-      },
-      {
-        title: "工程化",
-        collapsable: true,
-        children: [
-          ["/engineering/webpack.md", "webpack"],
-          ["/engineering/vite.md", "vite"],
-        ],
-      },
-      {
-        title: "前端基础",
-        collapsable: true,
-        children: [
-          ["/coding/css.md", "CSS"],
-          ["/coding/javascript.md", "JavaScript"],
-          ["/coding/datastructure.md", "数据结构"],
-        ],
-      },
-    ],
+    sidebar: "auto",
+    // sidebar: [
+    //   {
+    //     title: "前端框架",
+    //     collapsable: true,
+    //     children: [
+    //       ["/frame/react.md", "React"],
+    //       ["/frame/vue3.x.md", "Vue3"],
+    //       ["/frame/vue2.x.md", "Vue2"],
+    //     ],
+    //   },
+    //   {
+    //     title: "工程化",
+    //     collapsable: true,
+    //     children: [
+    //       ["/engineering/webpack.md", "webpack"],
+    //       ["/engineering/vite.md", "vite"],
+    //     ],
+    //   },
+    //   {
+    //     title: "前端基础",
+    //     collapsable: true,
+    //     children: [
+    //       ["/coding/css.md", "CSS"],
+    //       ["/coding/javascript.md", "JavaScript"],
+    //       ["/coding/http.md", "HTTP"],
+    //       ["/coding/datastructure.md", "数据结构"],
+    //     ],
+    //   },
+    // ],
     footer: {
       createYear: 2023,
       copyrightInfo: 'joe | <a href="https://github.com/joe-leong/fe" target="_blank">github</a>',
