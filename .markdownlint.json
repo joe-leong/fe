@@ -12,6 +12,7 @@
   "line-length": false,
   "no-inline-html": false,
   "no-duplicate-header": false,
+  "MD025": false,
   "proper-names": {
     "names": [
       "JavaScript",

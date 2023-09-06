@@ -30,8 +30,25 @@ export default defineConfig4CustomTheme({
             link: "/frame/react.md",
           },
           {
-            text: "Vue",
-            link: "/frame/vue.md",
+            text: "Vue3",
+            link: "/frame/vue3.x.md",
+          },
+          {
+            text: "Vue2",
+            link: "/frame/vue2.x.md",
+          },
+        ],
+      },
+      {
+        text: "工程化",
+        items: [
+          {
+            text: "webpack",
+            link: "/engineering/webpack.md",
+          },
+          {
+            text: "vite",
+            link: "/engineering/vite.md",
           },
         ],
       },
@@ -52,6 +69,10 @@ export default defineConfig4CustomTheme({
           },
         ],
       },
+      {
+        text: "Hooks",
+        link: "https://joe-leong.github.io/q-hooks",
+      },
     ],
     sidebar: [
       {
@@ -59,7 +80,16 @@ export default defineConfig4CustomTheme({
         collapsable: true,
         children: [
           ["/frame/react.md", "React"],
-          ["/frame/vue.md", "Vue"],
+          ["/frame/vue3.x.md", "Vue3"],
+          ["/frame/vue2.x.md", "Vue2"],
+        ],
+      },
+      {
+        title: "工程化",
+        collapsable: true,
+        children: [
+          ["/engineering/webpack.md", "webpack"],
+          ["/engineering/vite.md", "vite"],
         ],
       },
       {
