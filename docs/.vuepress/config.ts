@@ -75,6 +75,31 @@ export default defineConfig4CustomTheme({
         ],
       },
       {
+        text: "npm",
+        items: [
+          {
+            text: "eslint-config",
+            link: "https://www.npmjs.com/package/q-eslint-config",
+          },
+          {
+            text: "markdownlint-config",
+            link: "https://www.npmjs.com/package/q-markdownlint-config",
+          },
+          {
+            text: "commitlint-config",
+            link: "https://www.npmjs.com/package/q-commitlint-config",
+          },
+          {
+            text: "stylelint-config",
+            link: "https://www.npmjs.com/package/q-stylelint-config",
+          },
+        ],
+      },
+      {
+        text: "CLI",
+        link: "https://www.npmjs.com/package/q-lint",
+      },
+      {
         text: "Hooks",
         link: "https://joe-leong.github.io/q-hooks",
       },
