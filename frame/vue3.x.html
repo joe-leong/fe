@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue3.x 专题 | 前端小梁</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/fe/img/logo.png">
+    <meta name="description" content="前端工程">
+    <meta name="keywords" content="前端空间">
+    
+    <link rel="preload" href="/fe/assets/css/0.styles.4591ff3c.css" as="style"><link rel="preload" href="/fe/assets/js/app.db13bfcb.js" as="script"><link rel="preload" href="/fe/assets/js/2.8a617cb5.js" as="script"><link rel="preload" href="/fe/assets/js/1.93288cbb.js" as="script"><link rel="preload" href="/fe/assets/js/30.9bbd207b.js" as="script"><link rel="prefetch" href="/fe/assets/js/10.feaa5a21.js"><link rel="prefetch" href="/fe/assets/js/11.0f8fc2e9.js"><link rel="prefetch" href="/fe/assets/js/12.8fa8b992.js"><link rel="prefetch" href="/fe/assets/js/13.12bc34bf.js"><link rel="prefetch" href="/fe/assets/js/14.3212fb9c.js"><link rel="prefetch" href="/fe/assets/js/15.fb41cf4d.js"><link rel="prefetch" href="/fe/assets/js/16.e1d2c5cc.js"><link rel="prefetch" href="/fe/assets/js/17.121a5949.js"><link rel="prefetch" href="/fe/assets/js/18.2c95474c.js"><link rel="prefetch" href="/fe/assets/js/19.64aee18b.js"><link rel="prefetch" href="/fe/assets/js/20.5aa8575c.js"><link rel="prefetch" href="/fe/assets/js/21.ac283783.js"><link rel="prefetch" href="/fe/assets/js/22.ac52452e.js"><link rel="prefetch" href="/fe/assets/js/23.acbb4833.js"><link rel="prefetch" href="/fe/assets/js/24.c024c9f1.js"><link rel="prefetch" href="/fe/assets/js/25.cab781e4.js"><link rel="prefetch" href="/fe/assets/js/26.0ea0ec5a.js"><link rel="prefetch" href="/fe/assets/js/27.96b8ba4f.js"><link rel="prefetch" href="/fe/assets/js/28.f98c3df2.js"><link rel="prefetch" href="/fe/assets/js/29.47660cac.js"><link rel="prefetch" href="/fe/assets/js/3.af1dd6ec.js"><link rel="prefetch" href="/fe/assets/js/31.1235e83d.js"><link rel="prefetch" href="/fe/assets/js/4.f7a66bd6.js"><link rel="prefetch" href="/fe/assets/js/5.87f40c65.js"><link rel="prefetch" href="/fe/assets/js/6.83cf9e16.js"><link rel="prefetch" href="/fe/assets/js/7.3a5a463c.js"><link rel="prefetch" href="/fe/assets/js/vendors~docsearch.5a4296f1.js">
+    <link rel="stylesheet" href="/fe/assets/css/0.styles.4591ff3c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/fe/" class="home-link router-link-active"><img src="/fe/img/logo.png" alt="前端小梁" class="logo"> <span class="site-name can-hide">前端小梁</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/fe/index.html" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/fe/frame/react.html" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/fe/frame/vue3.x.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/fe/frame/vue2.x.html" class="nav-link">
+  Vue2
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/fe/engineering/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/fe/engineering/vite.html" class="nav-link">
+  vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端基础" class="dropdown-title"><span class="title">前端基础</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端基础" class="mobile-dropdown-title"><span class="title">前端基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/fe/coding/css.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/fe/coding/javascript.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/fe/coding/datastructure.html" class="nav-link">
+  数据结构
+</a></li></ul></div></div><div class="nav-item"><a href="https://joe-leong.github.io/q-hooks" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Hooks
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/joe-leong/fe" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/fe/index.html" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/fe/frame/react.html" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/fe/frame/vue3.x.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/fe/frame/vue2.x.html" class="nav-link">
+  Vue2
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/fe/engineering/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/fe/engineering/vite.html" class="nav-link">
+  vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端基础" class="dropdown-title"><span class="title">前端基础</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端基础" class="mobile-dropdown-title"><span class="title">前端基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/fe/coding/css.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/fe/coding/javascript.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/fe/coding/datastructure.html" class="nav-link">
+  数据结构
+</a></li></ul></div></div><div class="nav-item"><a href="https://joe-leong.github.io/q-hooks" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Hooks
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/joe-leong/fe" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>前端框架</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/fe/frame/react.html" class="sidebar-link">React</a></li><li><a href="/fe/frame/vue3.x.html" aria-current="page" class="active sidebar-link">Vue3</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/fe/frame/vue3.x.html#_1-目录结构" class="sidebar-link">1. 目录结构</a></li><li class="sidebar-sub-header"><a href="/fe/frame/vue3.x.html#_2-概念" class="sidebar-link">2. 概念</a></li><li class="sidebar-sub-header"><a href="/fe/frame/vue3.x.html#_3-apis" class="sidebar-link">3. APIS</a></li><li class="sidebar-sub-header"><a href="/fe/frame/vue3.x.html#x-插件" class="sidebar-link">x. 插件</a></li></ul></li><li><a href="/fe/frame/vue2.x.html" class="sidebar-link">Vue2</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工程化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端基础</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue3-x-专题"><a href="#vue3-x-专题" class="header-anchor">#</a> Vue3.x 专题</h1> <h2 id="_1-目录结构"><a href="#_1-目录结构" class="header-anchor">#</a> 1. 目录结构</h2> <div class="language-js extra-class"><pre class="language-js"><code>packages
+├── compiler<span class="token operator">-</span>core <span class="token comment">// 编译核心</span>
+│   └── src
+│       ├── compat
+│       └── transforms
+├── compiler<span class="token operator">-</span>dom <span class="token comment">// 编译时dom包</span>
+│   └── src
+│       └── transforms
+├── compiler<span class="token operator">-</span>sfc <span class="token comment">// 单文件编译器</span>
+│   └── src
+├── compiler<span class="token operator">-</span>ssr
+│   └── src
+│       └── transforms
+├── reactivity
+│   └── src
+├── reactivity<span class="token operator">-</span>transform
+│   └── src
+├── runtime<span class="token operator">-</span>core <span class="token comment">// 运行时核心</span>
+│   ├── src
+│   │   ├── compat
+│   │   ├── components
+│   │   └── helpers
+│   └── types
+├── runtime<span class="token operator">-</span>dom <span class="token comment">// 运行时dom包</span>
+│   ├── src
+│   │   ├── components
+│   │   ├── directives
+│   │   ├── helpers
+│   │   └── modules
+│   └── types
+├── server<span class="token operator">-</span>renderer
+│   └── src
+│       └── helpers
+├── shared
+│   ├── __tests__
+│   │   └── __snapshots__
+│   └── src
+├── size<span class="token operator">-</span>check
+│   └── src
+├── template<span class="token operator">-</span>explorer
+│   └── src
+├── vue
+│   ├── compiler<span class="token operator">-</span>sfc
+│   ├── examples
+│   │   ├── classic
+│   │   ├── composition
+│   │   └── transition
+│   ├── server<span class="token operator">-</span>renderer
+│   └── src
+└── vue<span class="token operator">-</span>compat
+    └── src
+</code></pre></div><h2 id="_2-概念"><a href="#_2-概念" class="header-anchor">#</a> 2. 概念</h2> <h3 id="_2-1-lru"><a href="#_2-1-lru" class="header-anchor">#</a> 2.1. LRU</h3> <p><code>LRU</code>是<code>Least recently used</code>的简写，主要原理是根据历史访问记录来淘汰数据。如果数据被访问过，则被定义为未来被访问的概率也高。存储结构是双链表，最近被访问的放到链表尾部，所以头部数据是被访问过时间最久的。
+<code>Vue</code>在内部监听<code>include</code>和<code>exclude</code>，一旦发生变化就会清洗缓存，分别使用<code>Map</code>和<code>Set</code>存储<code>vnode</code>和<code>Keys</code>,前者形成映射表，后者存储<code>key</code>，方便查找，无需遍历<code>Map</code></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token literal-property property">KeepAliveImpl</span><span class="token operator">:</span> ComponentOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">KeepAlive</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+  <span class="token literal-property property">__isKeepAlive</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">include</span><span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> RegExp<span class="token punctuation">,</span> Array<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> RegExp<span class="token punctuation">,</span> Array<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">max</span><span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> Number<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+  <span class="token comment">// 添加缓存的函数</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">cacheSubtree</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>pendingCacheKey <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cache<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>pendingCacheKey<span class="token punctuation">,</span> <span class="token function">getInnerChild</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>subTree<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token operator">...</span>
+  <span class="token comment">// prune cache on include/exclude prop change</span>
+  <span class="token function">watch</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>props<span class="token punctuation">.</span>include<span class="token punctuation">,</span> props<span class="token punctuation">.</span>exclude<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>include<span class="token punctuation">,</span> exclude<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      include <span class="token operator">&amp;&amp;</span> <span class="token function">pruneCache</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">matches</span><span class="token punctuation">(</span>include<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      exclude <span class="token operator">&amp;&amp;</span> <span class="token function">pruneCache</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token operator">!</span><span class="token function">matches</span><span class="token punctuation">(</span>exclude<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// prune post-render after `current` has been updated</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">flush</span><span class="token operator">:</span> <span class="token string">&quot;post&quot;</span><span class="token punctuation">,</span> <span class="token literal-property property">deep</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+  <span class="token comment">//LRU</span>
+  <span class="token comment">// prune oldest entry</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">&amp;&amp;</span> keys<span class="token punctuation">.</span>size <span class="token operator">&gt;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>max <span class="token keyword">as</span> string<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">pruneCacheEntry</span><span class="token punctuation">(</span>keys<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+ <span class="token keyword">function</span> <span class="token function">pruneCacheEntry</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">key</span><span class="token operator">:</span> CacheKey</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> cached <span class="token operator">=</span> cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token keyword">as</span> VNode
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>current <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">isSameVNodeType</span><span class="token punctuation">(</span>cached<span class="token punctuation">,</span> current<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">unmount</span><span class="token punctuation">(</span>cached<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// current active instance should no longer be kept-alive.</span>
+      <span class="token comment">// we can't unmount it now but it might be later, so reset its flag now.</span>
+      <span class="token function">resetShapeFlag</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    cache<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+    keys<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="_3-apis"><a href="#_3-apis" class="header-anchor">#</a> 3. APIS</h2> <h2 id="x-插件"><a href="#x-插件" class="header-anchor">#</a> x. 插件</h2> <ul><li>veaury
+在 <code>vue</code> 中使用 <code>react</code> 组件
+在 <code>react</code> 中使用 <code>vue</code> 组件</li> <li>@glideapps/glide-data-grid
+canvas 虚拟列表</li> <li>@vue-flow/core
+流程设计器</li></ul> <p>🚧</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/joe-leong/fe/edit/master/docs/frame/vue3.x.md" target="_blank" rel="noopener noreferrer">为该章节纠错</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023/9/6 05:26:12</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/fe/frame/react.html" class="prev">
+        React
+      </a></span> <span class="next"><a href="/fe/frame/vue2.x.html">
+        Vue2
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/fe/assets/js/app.db13bfcb.js" defer></script><script src="/fe/assets/js/2.8a617cb5.js" defer></script><script src="/fe/assets/js/1.93288cbb.js" defer></script><script src="/fe/assets/js/30.9bbd207b.js" defer></script>
+  </body>
+</html>
