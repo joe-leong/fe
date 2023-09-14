@@ -79,7 +79,7 @@ export default defineConfig4CustomTheme({
         items: [
           {
             text: "eslint-config",
-            link: "https://www.npmjs.com/package/q-eslint-config",
+            link: "https://www.npmjs.com/package/eslint-config-q-eslint-config",
           },
           {
             text: "markdownlint-config",
@@ -87,7 +87,7 @@ export default defineConfig4CustomTheme({
           },
           {
             text: "commitlint-config",
-            link: "https://www.npmjs.com/package/q-commitlint-config",
+            link: "https://www.npmjs.com/package/commitlint-config-q-commitlint-config",
           },
           {
             text: "stylelint-config",
