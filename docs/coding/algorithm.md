@@ -18,6 +18,9 @@ author:
 ## 冒泡排序
 
 冒泡排序只会对相邻的两个元素进行比较大小关系，如果不满足条件就让俩元素互换位置
+<br>空间复杂度 O(1)
+<br>时间复杂度 O(n ^ 2)
+<br>稳定
 
 ### 未优化
 
@@ -62,6 +65,10 @@ const bubbleSort = (arr) => {
 ```
 
 ## 插入排序
+
+<br>空间复杂度 O(1)
+<br>时间复杂度 O(n ^ 2)
+<br>稳定
 
 ### 直接插入
 
@@ -117,6 +124,63 @@ const binaryInsertionSort = (arr) => {
         }
         arr[low] = current
     }
+}
+```
+
+## 选择排序
+
+选择排序算法的实现思路有点类似插入排序，也分已排序区间和未排序区间。但是选择排序每次会从未排序区间中找到最小的元素，将其放到已排序区间的末尾
+<br>空间复杂度 O(1)
+<br>时间复杂度 O(n ^ 2)
+<br>不稳定
+
+```js
+const selectionSotr = arr => {
+    let length = arr.length
+    let minIndex,current
+
+    for(let i = 0;i<length-1;i++){
+        minIndex = i
+        current = arr[i]
+        for(let j=i+1;j<length;j++){
+            if(arr[j] < arr[minIndex]){
+                minIndex = j
+            }
+        }
+        arr[i] = arr[minIndex]
+        arr[minIndex] = current
+    }
+}
+```
+
+## 归并排序
+
+思路：通过把数组对半拆分成无数小的集合，分别合并
+<br>空间复杂度 O(nlogn)
+<br>时间复杂度 O(nlogn)
+<br>稳定
+
+```js
+const mergeSort = arr =>{
+    let length = arr.length
+    if(length <2) return arr
+    let pivor = length >> 1
+    let left = arr.slice(0,pivor)
+    let right = arr.slice(pivor)
+    return merge(mergeSort(left),mergeSort(right))
+}
+const merge = (left,right) =>{
+    let result = []
+
+    while(left.length && right.length){
+        if(left[0] < right[0]){
+            result.push(left.shift())
+        }else{
+            result.push(right.shift())
+        }
+    }
+    result.push(...left,...right)
+    return result
 }
 ```
 
