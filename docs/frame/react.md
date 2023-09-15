@@ -11,20 +11,20 @@ author:
 
 # React 专题
 
-## 1. 概念
+# 1. 概念
 
-### 1.1. 受控组件
+## 1.1. 受控组件
 
 - 受控组件
   对于某个组件，它的状态是否收到外界的控制，如 `input` 的值是否受 `value` 控制，并且改变的值通过 `change` 改变外界的值
 - 非受控组件
   对应地，组件的状态不受外界控制，如 `input` 只传入 `defaultValue` 作为初始值
 
-### 1.2. jsx
+## 1.2. jsx
 
 jsx 是一种描述当前组件内容的数据结构
 
-### 1.3. Fiber
+## 1.3. Fiber
 
 - Fiber 是一种架构
 
@@ -93,11 +93,11 @@ jsx 是一种描述当前组件内容的数据结构
   this.alternate = null;
   ```
 
-## 2. 源码
+# 2. 源码
 
-### 2.1. render 阶段
+## 2.1. render 阶段
 
-#### 2.1.1. beginWork
+### 2.1.1. beginWork
 
 `beginWork`的工作是传入`当前Fiber节点`，创建`子Fiber节点`，通过 current===null 判断是 mount 还是 update
 
@@ -109,7 +109,7 @@ function beginWork(
 ): Fiber | null
 ```
 
-##### 2.1.1.1. update
+#### 2.1.1.1. update
 
 满足一定条件时可以复用`current节点`，这样就能克隆`current.child`作为`workInProgress.child`
 
@@ -117,7 +117,7 @@ function beginWork(
   - oldProps === newProps && workInProgress.type === current.type (props 和 fiber.type 不变)
   - !includesSomeLane(renderLanes,updateLanes)，当前`fiber节点`优先级不够
 
-##### 2.1.1.2. mount
+#### 2.1.1.2. mount
 
 除`fiberRootNode`以外，会根据`fiber.tag`不同，创建不同类型的`子fiber节点`，最终调用的是`recocileChildren`，最终都会生成新的`Fiber`节点返回并赋值给`workInProgress.child`
 
@@ -151,7 +151,7 @@ export function reconcileChildren(
 }
 ```
 
-#### 2.1.2. completeWork
+### 2.1.2. completeWork
 
 与`beginWork`一样通过判断`current !== null` 来判断是`mount` 还是`update`
 
@@ -214,7 +214,7 @@ export const completeWork = (workInProgress: FiberNode) => {
 };
 ```
 
-##### 2.1.2.1. update
+#### 2.1.2.1. update
 
 判断`current`的同时还需要判断`workInProgress.stateNode`，如果不为`null`则是`update`,主要处理的 prop：
 
@@ -224,7 +224,7 @@ export const completeWork = (workInProgress: FiberNode) => {
 
 最终处理完的`props`会被赋值给`workInProgress.updateQueue`,最后在`commit`阶段被渲染，`props`是一个数组，基数值为`key`，偶数值为`value`
 
-##### 2.1.2.2. mount
+#### 2.1.2.2. mount
 
 主要逻辑：
 
@@ -234,44 +234,45 @@ export const completeWork = (workInProgress: FiberNode) => {
 
 每次都把生成的 DOM 节点插入到父亲节点中，`commit`后只需把`rootFiber`的`stateNode`插入到`fiberRoot`即可以更新全文档
 
-#### 2.1.3. effectList
+### 2.1.3. effectList
 
 :::warning
-
 v18 已经进行重构，变为`subtreeFlags`，通过冒泡传递到`rootFiber`，最终还得遍历树处理`effect`
-
 :::
-
 [关于 effectList 重构为 subtreeFlags](https://juejin.cn/post/7036155759121399821)
 
 `commit阶段`需要对存在`effectTag`的`fiber节点`进行对应的操作，来源一条叫`effectList`的单向链表
 
 在`completeWork`中的上层`completeUnitOfWork`中，每执行完`completeWork`且存在`effectTag`，就会把`fiber节点`添加到该链表中
 
-### 2.2. 触发更新
+## 2.2. 触发更新
 
-#### 2.2.1. 触发更新方式
+### 2.2.1. 触发更新方式
 
 - render
 - setState
 - dispatch reducer
 - forceUpdate
 
-#### 2.2.2. 更新流程
+## 2.3. 问题
 
-- 如何生成新的 fiber 链呢？
+### 2.3.1. 更新时workinprogress tree如何生成？
+
+### 2.3.2. 优先级插队如何实现？
+
+### 2.3.3. 如何生成新的 fiber 链呢？
 
   那就是在`beginworke`里，在处理子节点时调用的`reconcileChildFibers` 然后调用`reconcileSingleElement`下层调用 `useFiber` 产生`alternate`，最后`commitRoot`更新视图
 
-- 生成的真实节点如何合并的呢？
+### 2.3.4. 生成的真实节点如何合并的呢？
 
-  `beginwork`的时候对 fiber 完成 tag 的标记，`completework`时向上遍历，如果判断是原生节点就调用`appendAllChildren`把子节点添加到当前节点下，`fiber`保存 dom 的字段是`stateNode`
+  `beginwork`的时候对 fiber 完成 tag 的标记，`completework`时向上遍历，如果判断是原生节点就调用`appendAllChildren`把子节点添加到当前节点下，`fiber`保存 DOM 的字段是`stateNode`
 
-## 3. 优化
+# 3. 优化
 
-### 3.1. 渲染优化
+## 3.1. 渲染优化
 
-#### 3.1.1. ReRender 三要素
+### 3.1.1. ReRender 三要素
 
 `props 默认是全等比较，每次传入的 props 都是全新的对象，oldProps !== newProps true`
 
@@ -282,7 +283,7 @@ v18 已经进行重构，变为`subtreeFlags`，通过冒泡传递到`rootFiber`
 - context
   `从 provider 中获取数据`
 
-#### 3.1.2. 自顶向下更新
+### 3.1.2. 自顶向下更新
 
 在`React`中数据发生变化，会自顶向下构建一颗完整的组件树，即使组件内部没有发生变化，默认都会被重新渲染
 
@@ -309,7 +310,7 @@ function ExpensiveCpn() {
 }
 ```
 
-#### 3.1.3. 抽离变的部分
+### 3.1.3. 抽离变的部分
 
 把 Input 及展示需要用到 state 的部分抽离成一个组件，把变与不变分离
 
@@ -337,7 +338,7 @@ function Input() {
 }
 ```
 
-#### 3.1.4. 优化父组件
+### 3.1.4. 优化父组件
 
 `父组件不变，props 传递不变组件到可变组件中，也可以达到不变组件不重渲染`
 
@@ -366,7 +367,7 @@ function InputWrapper({ children }) {
 }
 ```
 
-#### 3.1.5. context 传参
+### 3.1.5. context 传参
 
 ```js
 const numCtx = createContext(0);
@@ -404,7 +405,7 @@ function Show() {
 }
 ```
 
-#### 3.1.6. memo
+### 3.1.6. memo
 
 `使用memo对中间组件的渲染结果缓存，原理是 memo 会对 props 进行浅比较`
 
@@ -419,7 +420,7 @@ const Middle = memo(() => {
 });
 ```
 
-#### 3.1.7. useMemo
+### 3.1.7. useMemo
 
 `使用 useMemo 对渲染结果缓存`
 
@@ -436,7 +437,7 @@ const Middle = () => {
 };
 ```
 
-## 4. 相关库
+# 4. 相关库
 
 immutable.js
-react-app-rewired
+React-app-rewired

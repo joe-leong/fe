@@ -24,6 +24,31 @@ export default defineConfig4CustomTheme({
         link: "/index.md",
       },
       {
+        text: "前端基础",
+        items: [
+          {
+            text: "JavaScript",
+            link: "/coding/javascript.md",
+          },
+          {
+            text: "http",
+            link: "/coding/HTTP.md",
+          },
+          {
+            text: "数据结构",
+            link: "/coding/datastructure.md",
+          },
+          {
+            text: "CSS",
+            link: "/coding/css.md",
+          },
+          {
+            text: "算法",
+            link: "/coding/algorithm.md",
+          },
+        ],
+      },
+      {
         text: "前端框架",
         items: [
           {
@@ -50,27 +75,6 @@ export default defineConfig4CustomTheme({
           {
             text: "vite",
             link: "/engineering/vite.md",
-          },
-        ],
-      },
-      {
-        text: "前端基础",
-        items: [
-          {
-            text: "CSS",
-            link: "/coding/css.md",
-          },
-          {
-            text: "JavaScript",
-            link: "/coding/javascript.md",
-          },
-          {
-            text: "http",
-            link: "/coding/HTTP.md",
-          },
-          {
-            text: "数据结构",
-            link: "/coding/datastructure.md",
           },
         ],
       },
