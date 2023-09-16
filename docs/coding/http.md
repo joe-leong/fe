@@ -14,16 +14,54 @@ author:
 
 # HTTP
 
-# 1. 响应头
+# 请求体
 
-## 1.1. Content-Disposition
+## General
 
-主要用于告诉浏览器如何处理服务器返回的文件。当服务器返回一个文件的时候，浏览器默认会根据文件的 MIME 类型来决定如何处理。但是，如果服务器希望浏览器采取特定的行为，比如下载文件，就可以通过 `Content-Disposition` 来告诉浏览器采取什么行动
-这个参数可以设置为 `inline`或者 `attachment`，前者表示直接在浏览器中打开文件，后者表示让浏览器下载文件
+- Request URL
 
-## 1.2. 缓存
+  | 参数            | 说明                                                         | 选项                                                         |
+  | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | Request URL     | 请求域名地址                                                 |                                                              |
+  | Request Method  | 请求发起方式                                                 | get\|post\|put\|delete                                       |
+  | Status Code     | 状态码                                                       |                                                              |
+  | Remote Address  | ip地址 eg:xxx:443                                            |                                                              |
+  | Referrer Policy | 防盗链，通过新的 Referrer Policy，我们可以针对第三方网站隐藏 Referrer，也可以只发送来源 URL 的 host 部分 | **No Referrer**：任何情况下都不发送 Referrer 信息<br />**No Referrer When Downgrade**：仅当发生协议降级（如 HTTPS 页面引入 HTTP 资源，从 HTTPS 页面跳到 HTTP 等）时不发送 Referrer 信息。这个规则是现在大部分浏览器默认所采用的<br />**Origin Only**：发送只包含 host 部分的 Referrer。启用这个规则，无论是否发生协议降级，无论是本站链接还是站外链接，都会发送 Referrer 信息，但是只包含协议 + host 部分（不包含具体的路径及参数等信息）<br />**Origin When Cross-origin**：仅在发生跨域访问时发送只包含 host 的 Referrer，同域下还是完整的。它与 `Origin Only` 的区别是多判断了是否 `Cross-origin`。需要注意的是协议、域名和端口都一致，才会被浏览器认为是同域<br />**Unsafe URL**：无论是否发生协议降级，无论是本站链接还是站外链接，统统都发送 Referrer 信息。正如其名，这是最宽松而最不安全的策略 |
 
-### 1.2.1. 强缓存
+## 请求头 Request Headers
+
+| 参数              | 说明                                    |
+| ----------------- | --------------------------------------- |
+| Accept            | 浏览器可接受的MIME类型                  |
+| Accept-Charset    | 浏览器可接受的字符集                    |
+| Accept-Encoding   | 浏览器能够支持的数据压缩方式            |
+| Accept-Language   | 浏览器希望的语言种类                    |
+| Connection        | 是否需要持久连接（HTTP1.1默认持久连接） |
+| Host              | 初始URL中的主机和端口                   |
+| User-Agent        | 浏览器类型                              |
+| Cookie            | 本域名下的所有cookie数据                |
+| If-Modified-Since | 携带cache-control 返回的expired         |
+| If-None-Match     | 携带上一次返回的Etag                    |
+| Content-Length    | 请求消息正文的长度 （POST下出现）       |
+
+## 响应头 Response Headers
+
+| 参数                | 说明                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| Expires             | 应该在什么时候认为资源已经过期                               |
+| Cache-Control       | 资源有效时长                                                 |
+| Etag                | 资源指纹                                                     |
+| Content-encoding    | 资源从服务端压缩的编码方式                                   |
+| Content-length      | 资源长度                                                     |
+| content-type        | 资源类型                                                     |
+| Last-Modified       | 服务端最后更新资源的时间                                     |
+| Content-Disposition | 主要用于告诉浏览器如何处理服务器返回的文件。当服务器返回一个文件的时候，浏览器默认会根据文件的 MIME 类型来决定如何处理。但是，如果服务器希望浏览器采取特定的行为，比如下载文件，就可以通过 `Content-Disposition` 来告诉浏览器采取什么行动<br/>这个参数可以设置为 `inline`或者 `attachment`，前者表示直接在浏览器中打开文件，后者表示让浏览器下载文件 |
+| connection          | 是否开启长连接                                               |
+| set-cookie          | 服务器控制浏览器保存cookie                                   |
+
+## 缓存
+
+### 强缓存
 
 - 在加载资源时，根据请求头中的`expires [http1.0]` 和 `cache-control [http1.1]` 值来判断是否命中强缓存，命中则直接从本地磁盘中读物资源
 - expires
@@ -39,7 +77,7 @@ author:
   - private：表示相应资源仅仅能被获取他的浏览器端缓存，不允许任何中间者缓存响应的资源
   - s-maxage：与 max-age 类似，`s` 代表共享，一般仅用于`cdn`或者其他中间者。会覆盖`max-age` 和 `expires` 响应头
 
-### 1.2.2. 协商缓存
+### 协商缓存
 
 - 如果强缓存步骤未命中，浏览器会发送请求到服务器，服务器通过请求头中的 `last-modified` 和 `etag`来验证是否命中协商缓存，如果命中则返回 `304` 状态码，不返回资源数据
 - 协商缓存只要使用到两对响应头
@@ -52,7 +90,7 @@ author:
 
 > 💡etag 优先级比 last-modified 高
 
-### 1.2.3. service worker
+### service worker
 
 `service worker` 是浏览器与服务器之间的中间人角色，它可以拦截当前网站所有的请求
 
@@ -122,7 +160,7 @@ author:
           })
     );
   })
-
+  
   // 激活时删除旧缓存
   function deleteOldCaches() {
     return caches.keys().then(function (keys) {
@@ -137,7 +175,7 @@ author:
   }
   //sw激活阶段,说明上一sw已失效
   self.addEventListener('activate', function(event) {
-
+  
       event.waitUntil(
           // 遍历 caches 里所有缓存的 keys 值
           caches.keys().then(deleteOldCaches)
@@ -145,7 +183,7 @@ author:
   });
   ```
 
-### 2.1.4. 数据缓存
+### 数据缓存
 
 本地缓存操作库 [localforage](http://localforage.docschina.org/)
 <br>indexedDB操作库 [Dexie.js](https://github.com/dexie/Dexie.js )
@@ -160,11 +198,11 @@ author:
 - indexedDB
 <br>无限 浏览器端数据库 需要手动清除
 
-# 2. `HTTP` 版本
+# `HTTP` 版本
 
-## 2.1. `HTTP2`
+## `HTTP2`
 
-### 2.1.1. `HTTP1` 的问题
+### `HTTP1` 的问题
 
 1. 队头阻塞
    <br>如果仅仅使用一个连接，它需要发起请求、等待响应，之后才能发起下一个请求。在请求应答过程中，如果出现任何状况，剩下所有的工作都会被阻塞在那次请求应答之后。这就是“队头阻塞”，它会阻碍网络传输和 Web 页面渲染，直至失去响应。为了防止这种问题，现代浏览器会针对单个域名开启 6 个连接，通过各个连接分别发送请求。它实现了某种程度上的并行，但是每个连接仍会受到“队头阻塞”的影响
@@ -177,7 +215,7 @@ author:
 5. 第三方资源
    <br>很多第三方资源都不在`Web`开发者的控制范围内，所以很可能其中有些资源的性能很差，会延迟甚至阻塞页面渲染
 
-### 2.1.2. `HTTP2` 特点
+### `HTTP2` 特点
 
 1. 二进制协议
    - 全面采用二进制格式而非文本格式
@@ -196,12 +234,12 @@ author:
      - `nopush` 指示浏览器可能存在资源缓存，有推动能力的服务端不主动推送资源
        🚧
 
-### 2.1.3. 开启`HTTP2`
+### 开启`HTTP2`
 
 1. `NGINX` 添加支持模块 `--with-http_v2_module`
 2. 修改监听配置 `listen 443 ssl http2`
    🚧
 
-## 2.2. `HTTP3`
+## `HTTP3`
 
 🚧

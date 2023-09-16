@@ -158,7 +158,7 @@ const selectionSotr = arr => {
 思路：通过把数组对半拆分成无数小的集合，分别合并
 <br>空间复杂度 O(nlogn)
 <br>时间复杂度 O(nlogn)
-<br>稳定
+<br>不稳定
 
 ```js
 const mergeSort = arr =>{
@@ -183,5 +183,15 @@ const merge = (left,right) =>{
     return result
 }
 ```
+
+## 堆排序
+
+## 动态规划
+
+### 斐波那契数列
+
+## 贪心算法
+
+### 背包问题
 
  🏗
