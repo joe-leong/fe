@@ -114,7 +114,7 @@ author:
     ```js
     export const xxx = value
     export {
-    	xxx:value,
+     xxx:value,
       xxx:value
     }
     export default xxx
@@ -160,6 +160,7 @@ obj.b.catchFn.call({ a: 3 }); // {a:3} 通过call，bind，apply改变this指向
     2. 将空对象原型的内存地址**proto**指向构造函数的原型对象
     3. 利用函数的 call 方法，将原本指向 window 的 this 指向新建的空对象
     4. 返回第三步的调用结果
+
     ```js
     function Foo(name) {
       this.name = name;
@@ -300,6 +301,40 @@ findMost([1,2,3,2,2,2,5,4,2])
 🚧
 
 ## 8. 浏览器渲染过程
+
+## 9. == & ===
+
+```js
+基本类型：undefined、null、boolean、number、string
+引用类型：Array、Object
+包装类型：String、Number、Boolean
+```
+
+- 如果两个操作数都是数字类型，则直接进行数值比较。
+- 如果两个操作数都是字符串类型，则按照字典顺序进行字符串比较。
+- 如果一个操作数是数字类型，另一个操作数是字符串类型，则将字符串转换为数字后再进行比较。
+- 如果两个操作数都是对象类型，则会调用它们的valueOf()或toString()方法来获取可比较的值，然后进行比较
+- NaN和其他任何值都是不相等的，包括它本身
+![转换规则](./image/js/20200512101605115.bmp)
+
+### 9.1. ==
+
+双等号比较，如果两边类型不一样会尝试转换成基本类型进行比较
+
+```js
+// 对象比较
+{a:1} == {a:1} //false 也会进行类型转换，但是转换会依然不会相等
+{a:1} == 'object Object' // true 转换为字符串，调用.toString
+'object Object' == {a:1} // false 尝试把字符串转换成对象
+[] == true // false 都转换成数字类型 ‘’ == true => 0 == 1
+[1] == true // true '1' == true => 1 == 1
+[12] == true // false '12' == true => 12 == 1
+{} == true // false  NaN == true
+```
+
+### 9.2 ===
+
+全等比较，不进行类型隐式转换，引用类型比较地址，基本类型比较值
 
 🚧
 
