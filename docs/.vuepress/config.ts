@@ -56,6 +56,10 @@ export default defineConfig4CustomTheme({
             link: "/frame/react.md",
           },
           {
+            text: "React15",
+            link: "/frame/react15.md",
+          },
+          {
             text: "Vue3",
             link: "/frame/vue3.x.md",
           },

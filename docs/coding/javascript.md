@@ -335,6 +335,45 @@ findMost([1,2,3,2,2,2,5,4,2])
 
 全等比较，不进行类型隐式转换，引用类型比较地址，基本类型比较值
 
+## 10. 节流与防抖
+
+- 防抖
+
+  延迟执行回调函数，事件内再次出发重新计时，直到超出延迟时间后触发函数
+
+  ```js
+  function debounce(fn,ms){
+     let timer
+     return function(){
+        let context = this
+        let args = arguments
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(()=>{
+          fn.apply(context,args)
+        },ms)
+    }
+  }
+  ```
+
+- 节流
+
+  以指定的时间频率执行回调函数，指定时间内回调函数只会执行一次
+
+  ```js
+  function throttle(fn,ms){
+    let previous
+    return function (){
+      let now = Date.now()
+      let context = this
+      let args = arguments
+      if(now - previous > ms){
+        fn.apply(context,args)
+        previous = now
+      }
+    }
+  }
+  ```
+
 🚧
 
 🚧 `持续更新` 🚧

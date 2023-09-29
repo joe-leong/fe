@@ -61,7 +61,7 @@ jsx 是一种描述当前组件内容的数据结构
 
       ```js
       this.ref = null;
-
+    
       // 作为动态的工作单元的属性
       this.pendingProps = pendingProps;
       this.memoizedProps = null;
@@ -76,19 +76,19 @@ jsx 是一种描述当前组件内容的数据结构
 
   ```js
   this.mode = mode;
-
+  
   this.effectTag = NoEffect;
   this.subtreeTag = NoSubtreeEffect;
   this.deletions = null;
   this.nextEffect = null;
-
+  
   this.firstEffect = null;
   this.lastEffect = null;
-
+  
   // 作为调度优先级的属性
   this.lanes = NoLanes;
   this.childLanes = NoLanes;
-
+  
   // 指向该fiber在另一次更新时对应的fiber
   this.alternate = null;
   ```
@@ -436,6 +436,12 @@ const Middle = () => {
   }, []);
 };
 ```
+
+## BrowserRouter 核心原理实现
+
+- 历史操作：pushState,replaceState 不会触发popState
+- 监听变更：window.addEventListener('popState',()={})
+- 操作：history.back(),history.forward(),history.go() 会触发popState
 
 # 4. 相关库
 
