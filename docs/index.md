@@ -3,7 +3,7 @@ home: true
 heroText: 小梁
 tagline: 前端空间
 actionText: 马上进入 →
-actionLink: /coding/javascript.md
+actionLink: /frame/react16.md
 
 features:
   - title: 前端框架
