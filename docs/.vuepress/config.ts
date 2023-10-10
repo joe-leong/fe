@@ -46,6 +46,10 @@ export default defineConfig4CustomTheme({
             text: "算法",
             link: "/coding/algorithm.md",
           },
+          {
+            text: "Node",
+            link: "/coding/node.md",
+          },
         ],
       },
       {
