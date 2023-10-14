@@ -525,4 +525,23 @@ eg: 0.1转二进制，最终表示为 0.00110011... 后面将会 0011 无限循�
 - sign bit（符号位）：用来表示正负号，0为正1为负（1位）
 - exponent（指数）：用来表示次方数（11位）
 - mantissa（尾数）：用来表示精确度（52位）
+
+# 实现bind
+
+```js
+
+Object.prototype.myBind = function (target) {
+  let _symbol = Symbol()
+  target[_symbol] = this
+  target[_symbol](...Array.from(arguments).slice(1))
+  delete target[_symbol]
+}
+
+function aa(name) {
+  console.log(this,name)
+}
+
+aa.myBind({a:123},'joe')
+```
+
 🚧 `持续更新` 🚧

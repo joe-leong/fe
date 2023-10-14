@@ -183,6 +183,24 @@ author:
   });
   ```
 
+- 自动生成sw，使用 `sw-precache` 插件在打包时在根目录生成sw文件，对所有静态文件进行缓存
+
+  ```js
+  gulp.task('generate-service-worker', function(callback) {
+    var swPrecache = require('sw-precache');
+    var rootDir = 'app';
+
+    swPrecache.write(`${rootDir}/service-worker.js`, {
+      staticFileGlobs: [rootDir + '/**/*.{html,css,png,jpg,gif,svg,eot,ttf,woff}', 
+      rootDir + '/js/*.js'/** 避免sw被缓存 */],
+      stripPrefix: rootDir,
+      verbose: true  // 为每个缓存打出日志
+    }, callback);
+
+  });
+
+  ```
+
 ### 数据缓存
 
 本地缓存操作库 [localforage](http://localforage.docschina.org/)
@@ -245,4 +263,14 @@ author:
 # CDN 优化
 
 CDN（Content Delivery Network）即内容分发网络，其基本思路是尽可能的避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输更快、更稳定。将网站的资源发布到离用户最近的网络边缘，用户可以就近取得资源内容
+
+# 跨域
+
+跨域（Cross-Origin）是指在浏览器中，当前网页的域名、协议、端口与请求的资源所在的域名、协议、端口不一致，导致浏览器限制跨域请求的操作。跨域问题是由浏览器的同源策略（Same-Origin Policy）引起的
+
+## 跨域产生原因
+
+- 域名不同
+- 协议不同
+- 端口不同
 🚧
