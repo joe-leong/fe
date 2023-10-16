@@ -78,3 +78,68 @@ React16架构分为三层：
 - 执行 `useLayout` 回调函数，调度 `useEffect` 的销毁函数以及回调函数
 - 类组件 `this.setState` 的第二个回调函数也会执行
 - 执行的生命周期钩子：`componentDidMount`, `componentDidUpdate`
+
+## v18新特性
+
+### 新增hook
+
+- useId
+解决了客户端和服务端id不同的问题
+原理：利用组件在组件数中的层级生成id
+用法：
+
+```js
+fc(){
+  const id = useId()
+  return (
+    <input type="checkbox" name="react" id={id} />
+  )
+}
+```
+
+- useTransition
+在`React`中状态更新分为紧急更新和过渡更新：
+<br>紧急更新：输出、点击、拖拽需要立即响应
+<br>过渡更新：将UI从一个视图过渡到另一个视图
+<br>使用`useTransition`可以将一个任务变为非紧急状态
+用法：
+
+```js
+fc(){
+  const [isPending,startTransition] = useTransition()
+  return (
+    <>
+      <input type="text" value={value} onChange={(e)=>{
+        setValue(e.target.value)// 紧急任务
+        startTransition(()=>{
+          setSearch(e.target.value)// 非紧急任务
+        })
+      }} />
+      {isPending && 'loading……'}{/* 非紧急任务的状态 */}
+    </>
+  )
+
+}
+```
+
+- useDeferredValue
+将任务变成非紧急任务
+:::tip 与useTrransition区别
+useDeferredValue把任务变成了`延迟更新任务`，useTransition则是把一个状态变成了`延迟状态`
+:::
+用法：
+
+```js
+fc(){
+  const [state,setState] = useState('')
+  const deferedValue = useDeferrefValue(state)
+  return (
+    <>
+      <input type="text" value={value} onChange={(e)=>{
+        setState(e.target.value)// 紧急任务
+      }} />
+      <List search={deferredValue} />{/* 标记非紧急状态 */}
+    </>
+  )
+}
+```
