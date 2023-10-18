@@ -121,6 +121,41 @@ React16架构分为三层：
 - componentWillReceiveProps
 - componentWillUpdate
 
+## 错误边界
+
+为了解决出现的错误导致整个应用崩溃的问题，`16`引入了`错误边界`的新概念。错误边界是一种`React`组件，这种组件可以捕获发生在其子组件树任何位置的`js`错误，并打印这些错误，同时展示降级`UI`，而不会渲染那些发生崩溃的子组件树。
+<br>形成错误边界的两个条件,
+
+- 使用了static getDerivedStataFromError,在错误抛出后，渲染备用`UI`
+- 使用了componentDidCatch打印错误信息
+
+```js
+class ErrorBoundary extends React.Component{
+  state = {
+    hasError:false
+  }
+  constructor(){
+    super(props)
+  }
+  static getDerivedStateFromError(error){
+    return {
+      hasError:true
+    }
+  }
+  componentDidCatch(error,errorInfo){
+    // 可以将错误日志上报服务器
+  }
+  render(){
+    return this.state.hasError ? <h1>somthing wrong</h1> : this.props.children
+  }
+}
+```
+
+如果不是渲染阶段产生的错误，并不会被错误边界捕获。需要在组件内监听，或者在全局监听。
+
+- 使用trycatch语法捕获在组件内操作`UI`降级
+- 在全局监听error事件，window.addEventListener('error',function(e){})
+
 ## v18新特性
 
 ### 新增hook
