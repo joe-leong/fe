@@ -79,6 +79,48 @@ React16架构分为三层：
 - 类组件 `this.setState` 的第二个回调函数也会执行
 - 执行的生命周期钩子：`componentDidMount`, `componentDidUpdate`
 
+## 生命周期（16.4+）
+
+### 创建阶段
+
+- constructor
+实例过程中自动调用的方法，在方法内部通过`super`关键字获取来自父组件的`props`
+- getDerivedStateFromProps
+新增的生命周期，是一个静态的方法，因此不能访问到组件的实例
+<br>执行时机：组件创建和更新阶段，不论是`props`还是`state`变化，都会调用
+<br>参数：（props，state），即将更新的`props`，上一个状态的`state`
+- render
+类组件用于渲染`DOM`结构的方法，可以访问组件`state`和`props`属性
+- componentDidMount
+组件挂载到真实`DOM`后执行
+
+### 更新阶段
+
+- getDerivedStateFromProps
+同上
+- shouldComponentUpdate
+基于`props`和`state`是否需要重新渲染组件，默认返回`true`
+- render
+同上
+- getSnapshotBeforeUpdate
+在`render`后执行，执行时`DOM`还没被更新
+<br>参数`props`和`state`,返回的参数作为`componentDidUpdate`的第三参数，目的在于获取组件更新前的一些信息，如滚动位置之类，在组件更新后可以恢复一些UI上的状态
+- componentDidUpdate
+在组件更新结束后执行，可以根据前后的`props`和`state`的变化做相应的操作，如获取数据，修改`DOM`样式等
+
+### 卸载阶段
+
+- componentWillUnmount
+用于组件卸载前，清理一些注册监听事件，或者取消订阅的网络请求等。<br>一旦一个组件实例被卸载，其不会被再次挂载，而只可能是被重新创建
+
+### 与16.4-对比
+
+减少了以下钩子，在现实使用中还能使用，只是增加了`UNDAFE_`前缀，原因是fiber架构，会导致render阶段会被多次执行，一下钩子可能会被多次执行
+
+- componentWillMount
+- componentWillReceiveProps
+- componentWillUpdate
+
 ## v18新特性
 
 ### 新增hook
