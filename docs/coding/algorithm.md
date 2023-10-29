@@ -135,7 +135,7 @@ const binaryInsertionSort = (arr) => {
 <br>不稳定
 
 ```js
-const selectionSotr = arr => {
+const selectionSort = arr => {
     let length = arr.length
     let minIndex,current
 
@@ -181,6 +181,43 @@ const merge = (left,right) =>{
     }
     result.push(...left,...right)
     return result
+}
+```
+
+## 快速排序
+
+思想：定义基准，从前后两个指针与基准值比较大小排序，取的下一次排序的分界线，递归排序
+
+```js
+function quickSort(arr, left, right) {
+  if(left >= right) return
+  let pivor = partition(arr, left, right)
+  quickSort(arr,left,pivor-1)
+  quickSort(arr,pivor+1,right)
+}
+
+function partition(arr, left, right) {
+  let index = left, base = arr[left]
+  while (left < right) {
+    while (left < right) {
+      if (arr[right] < base) {
+        arr[left] = arr[right]
+        index = right
+        break
+      }
+      right--
+    }
+    while (left < right) {
+      if (arr[left] > base) {
+        arr[right] = arr[left]
+        index = left
+        break
+      }
+      left++
+    }
+  }
+  arr[index] = base
+  return index
 }
 ```
 
