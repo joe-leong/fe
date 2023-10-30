@@ -544,4 +544,148 @@ function aa(name) {
 aa.myBind({a:123},'joe')
 ```
 
+# 数据存储
+
+## indexDB
+
+`indexDB` 是一个运行在浏览器上的`非关系型数据库`，容量大小不小于`250MB`，步进能存储字符串，还可以存储二进制数据
+
+特点：
+
+1. 键值对存储：`indexDB`内部采用对象仓库存储数据。所有类型的数据都可以存入，包括js对象。对象仓库中，数据以`键值对`的形式保存，每个数据记录都有对应的主键，主键是独一无二的，不能重复，否则抛出错误。
+2. 异步：操作是不会锁死浏览器，用户依然可以进行其他操作。
+3. 支持事务：只要有一步失败，整个事务就取消，数据库回滚到事务发生之前的状态，不存在只改写一部分数据的情况。
+4. 同源性限制：每一个数据库对应创建他的域名。网页只能访问自身域名下的数据库，而不能访问跨域的数据库。
+5. 支持未禁止存储：步进可以存储字符串，还可以存储二进制数据（ArrayBuffer和Blob对象）。
+6. 存储空间大：存储空间一般不少于`250MB`
+
+### 使用
+
+```js
+let db = null
+// 打开数据库
+const request = window.indexDB.open(databaseName,version)
+
+request.onupgradeneeded = res => {
+  console.log('updated', res)
+  db = res.target.result
+  /**
+   * 建表
+   * keypath 主键
+   * autoIncrement:true 自动增加/生成
+   */
+  db_table = db.createObjectStore('group', { keyPath: 'id' })
+  /**
+   * 创建索引
+   * 索引名称
+   * 索引所在的属性
+   * 
+   */
+  db_table.createIndex('indexName','name',{unique:true})
+}
+
+request.onsuccess = res => {
+  /**
+   * 添加数据
+   */
+  const addData = store.add({
+    id: 1,
+    name: 'joe',
+    age:18
+  })
+
+  addData.onerror = err => {
+    console.log('数据添加失败',err)
+  }
+  addData.onsuccess = res => {
+    console.log('数据添加成功',res)
+  }
+
+  /**
+   * 获取数据
+   */
+  const pickStore = db.transaction(['group']).objectStore('group')
+
+  let pick = pickStore.get(1)
+
+  pick.onsuccess = res => {
+    const { result } = res.target
+    if (result) {
+      console.log('pick success', result)
+    } else {
+      console.log('pick fail');
+    }
+  }
+
+  pick.onerror = err => {
+    console.log('pick err',err)
+  }
+
+  /**
+   * 更新数据
+   */
+  const putStore = db.transaction(['group'],'readwrite').objectStore('group')
+
+  const putReq = putStore.put({
+    id: 1,
+    name: 'joe' + Math.random(),
+    age:18
+  })
+
+  putReq.onsuccess = res => {
+    console.log('更新成功',res)
+  }
+
+  putReq.onerror = err => {
+    console.log('更新失败',err);
+  }
+
+  /**
+   * 删除数据
+   */
+  const delReq = putStore.delete(1)
+
+  delReq.onsuccess = res => {
+    console.log('删除成功',res);
+  }
+
+  delReq.onerror = err => {
+    console.error('删除失败',err);
+  }
+
+  /**
+   * 通过索引获取数据
+   */
+  const indexGet = pickStore.index('indexName').get('joe')
+
+  indexGet.onsuccess = res => {
+    console.log('索引获取成功',res);
+  }
+
+  indexGet.onerror = err => {
+    console.error('索引获取失败',err);
+  }
+
+  /**
+   * 获取指针并遍历表
+   */
+  const cursor = pickStore.openCursor()
+
+  cursor.onsuccess = res => {
+    console.log('指针获取成功',res);
+    let point = res.target.result
+    if (point) {
+      console.log('point value', point.value);
+      point.continue()
+    } else {
+      console.error('没有更多数据了');
+    }
+  }
+
+  cursor.onerror = err => {
+    console.error('指针获取失败');
+  }
+}
+```
+
 🚧 `持续更新` 🚧

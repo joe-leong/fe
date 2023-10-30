@@ -156,6 +156,37 @@ class ErrorBoundary extends React.Component{
 - 使用trycatch语法捕获在组件内操作`UI`降级
 - 在全局监听error事件，window.addEventListener('error',function(e){})
 
+## 性能优化
+
+- 避免使用内联函数
+- 使用 React Fragments避免额外标记
+- 使用Immutable
+- 懒加载组件
+- 事件绑定方式
+- 服务端渲染
+- memo useCallback ...
+
+## redux
+
+`redux` 是用于数据状态管理，而 `React`是一个`UI`渲染库，如果将两者连接在一起，需要搭配使用`react-redux`或者类似的库，通过`redux`将整个应用状态存储到`store`中，组件可以派发`dispatch`行为`action`给`store`，其他组件通过订阅`store`中的状态`state`来更新自身的视图
+`react-redux`将组件分成：
+
+- 容器组件：存在逻辑处理
+- UI组件：只负责显示和交互，内部不处理逻辑，状态由外部控制
+
+`react-redux`分成两大核心：
+
+- provider
+- connection
+
+### provider
+
+使用`provider`把store内的`state`提供给子组件使用
+
+### connection
+
+`connect`方法将`store`上的`getState`和`dispatch`包装成`props`
+
 ## v18新特性
 
 ### 新增hook
