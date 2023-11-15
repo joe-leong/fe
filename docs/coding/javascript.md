@@ -688,4 +688,28 @@ request.onsuccess = res => {
 }
 ```
 
+# 哈希对象添加迭代器
+
+`使用for...of遍历哈希对象时无法进行是因为在原型上找不到迭代器，因此可以手动注册一个迭代器`
+
+```js
+function* objectEntries(target){
+  const propKeys = Reflect.ownKeys(target)
+  for(const propKey of propKeys){
+    yield [propKey,target[propKey]]
+  }
+}
+
+let names = {
+  first:'joe',
+  second:'merry'
+}
+
+for(const [key,name] of objectEntries(names)){
+  console.log(key,name)
+  // first joe
+  // second merry
+}
+```
+
 🚧 `持续更新` 🚧
