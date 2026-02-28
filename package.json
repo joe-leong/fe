@@ -4,8 +4,8 @@
   "description": "joe's fe doc",
   "scripts": {
     "init": "pnpm install",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
+    "docs:dev": "NODE_OPTIONS=--openssl-legacy-provider vuepress dev docs",
+    "docs:build": "NODE_OPTIONS=--openssl-legacy-provider vuepress build docs",
     "lint": "markdownlint index.md",
     "commit": "git-cz"
   },
@@ -17,8 +17,8 @@
   "license": "ISC",
   "devDependencies": {
     "git-cz": "^4.9.0",
-    "markdownlint": "^0.29.0",
-    "vuepress": "^1.9.9",
+    "markdownlint": "^0.40.0",
+    "vuepress": "^1.9.10",
     "vuepress-plugin-one-click-copy": "^1.0.6",
     "vuepress-plugin-zooming": "^1.1.8"
   }

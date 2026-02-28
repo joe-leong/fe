@@ -4,7 +4,7 @@ export default defineConfig4CustomTheme({
   locales: {
     "/": {
       lang: "zh-CN",
-      title: "前端小梁",
+      title: "小梁の前端空间",
       description: "前端工程",
     },
   },
@@ -22,6 +22,15 @@ export default defineConfig4CustomTheme({
       {
         text: "首页",
         link: "/index.md",
+      },
+      {
+        text: "AI",
+        items: [
+          {
+            text: "python",
+            link: "/ai/python.md",
+          },
+        ],
       },
       {
         text: "前端基础",
