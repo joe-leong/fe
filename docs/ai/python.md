@@ -396,3 +396,52 @@ print(text[:-2])    # "Python"（去掉最后2个字符）
 print(text[::2])    # "Pto编"（每隔2个字符取一个）
 print(text[::-1])   # "程编nohtyP"（反转字符串）
 ```
+
+# 代码整洁
+
+## 海象运算符（:=）
+
+```py
+# 场景：在条件中同时赋值和判断
+# 传统写法
+data = api.get_data()
+if data:
+    process(data)
+
+# 海象运算符写法
+if (data := api.get_data()):
+    process(data)
+
+# 场景：循环中避免重复调用
+while chunk := stream.read(1024):
+    process_chunk(chunk)
+```
+
+## 枚举（代替魔法数字）Enum
+
+```py
+from enum import Enum, auto
+# 自动赋值
+class AgentStatus(Enum):
+    IDLE = auto()      # 1
+    RUNNING = auto()   # 2
+    PAUSED = auto()    # 3
+    ERROR = auto()     # 4
+# 手动赋值
+class ToolType(Enum):
+    SEARCH = "search_engine"
+    CALCULATOR = "math_tool"
+    DATABASE = "db_query"
+
+# 使用示例
+status = AgentStatus.RUNNING
+if status == AgentStatus.RUNNING:
+    print("Agent正在运行")
+
+tool_type = ToolType.SEARCH
+print(tool_type.value)  # "search_engine"
+```
+
+<pre style="background:#F0F0F0;padding:20px">
+auto()自动赋值
+</pre>
