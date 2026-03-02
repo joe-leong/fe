@@ -234,3 +234,165 @@ async def main():
     async for chunk in stream_llm_response("你好 我是AI助手 哈哈"):
         print(chunk, end="", flush=True)  # 逐个词打印
 ```
+
+## 调试 pdb
+
+``pdb 是 Python 的标准库，全称是 "Python Debugger"（Python 调试器）pdb.set_trace()进入调试，
+raise ValueError(f"处理错误: {message['content']}")抛出错误，开发中使用try...except Exception as e捕获错误进入错误处理逻辑``
+
+| 命令 | 简写 | 作用 |
+| :----- | :----- | :----- |
+| list | l | 查看当前代码位置 |
+| next | n | 执行下一行 |
+| step | s | 进入函数内部 |
+| continue | c | 继续执行直到下一个断点 |
+| print | p | 打印变量值 |
+| quit | q | 退出调试器 |
+
+```py
+# 只在特定条件下暂停调试
+import pdb
+
+for i, message in enumerate(conversation):
+    if message["role"] == "assistant" and "error" in message["content"]:
+        pdb.set_trace()  # 只在出错时进入调试
+    process_message(message)
+```
+
+## 日志记录 logging
+
+<h3>日志级别</h3>
+
+| 级别 | 数值 | 用途 |
+| :---- | :---- | :---- |
+| DEBUG | 10 | 调试信息，开发时使用 |
+| INFO | 20 | 一般信息，正常流程 |
+| WARNING | 30 | 警告，不影响运行但需要注意 |
+| ERROR | 40 | 错误，功能执行失败 |
+| CRITICAL | 50 | 严重错误，程序可能崩溃 |
+
+```py
+import logging
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    filename='agent.log'  # 保存到文件
+)
+logger = logging.getLogger(__name__)
+
+class Agent:
+    def _process(self, task):
+        """内部处理方法"""
+        # 模拟任务处理
+        if task == "错误任务":
+            raise ValueError("处理任务时出错！")
+        return f"成功处理: {task}"
+    
+    def run(self, task):
+        logger.info(f"开始执行任务：{task}")
+        try:
+            result = self._process(task)
+            logger.info(f"任务完成：{result[:50]}...")  # 只记录前50字符
+            return result
+        except Exception as e:
+            logger.error(f"任务失败：{e}", exc_info=True)  # 记录完整错误堆栈
+            raise
+
+# ============ 测试代码 ============
+if __name__ == "__main__":
+    print("开始测试Agent日志系统...")
+    print("日志将保存到 agent.log 文件中\n")
+    
+    # 创建Agent实例
+    agent = Agent()
+    
+    # 测试1：正常任务
+    print("测试1：执行正常任务")
+    try:
+        result = agent.run("数据分析任务")
+        print(f"结果: {result}\n")
+    except Exception as e:
+        print(f"错误: {e}\n")
+    
+    # 测试2：会出错的任务
+    print("测试2：执行会出错的任务")
+    try:
+        result = agent.run("错误任务")
+        print(f"结果: {result}\n")
+    except Exception as e:
+        print(f"捕获到错误: {e}\n")
+    
+    # 测试3：长文本任务
+    print("测试3：执行长文本任务")
+    long_task = "这是一个非常非常非常非常非常非常非常非常非常非常长的任务描述，超过50个字符的任务描述"
+    try:
+        result = agent.run(long_task)
+        print(f"结果: {result}\n")
+    except Exception as e:
+        print(f"错误: {e}\n")
+    
+    print("测试完成！请查看 agent.log 文件查看日志记录")
+    
+    # 显示日志文件内容
+    print("\n" + "="*50)
+    print("agent.log 文件内容：")
+    print("="*50)
+    try:
+        with open('agent.log', 'r') as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("日志文件尚未创建")
+```
+
+<pre style="background:#F0F0F0;padding:20px">
+<b>实例中演示的功能</b>
+1. ✅ 正常任务执行和日志记录
+2. ❌ 错误任务执行和完整的错误堆栈记录
+3. 📝 长文本自动截断功能
+4. 📁 日志保存到文件
+</pre>
+
+## 类型检查 typechecked
+
+```py
+from typing import Union, List, Dict
+from typeguard import typechecked
+
+@typechecked  # 运行时检查类型
+def process_tool_result(
+    result: Union[str, List[str], Dict],
+    max_length: int = 100
+) -> str: # 返回字符串类型
+    if isinstance(result, str):
+        return result[:max_length]
+    elif isinstance(result, list):
+        return ", ".join(result)[:max_length]
+    elif isinstance(result, dict):
+        return str(result)[:max_length]
+    else:
+        raise TypeError(f"不支持的类型：{type(result)}")
+```
+
+<pre style="background:#F0F0F0;padding:20px">
+[start:end]切片操作符，python中的切割功能，意味着从第start位切割到end位
+冒号前默认0，冒号后默认到末尾，可赋值切割起始位，意味从起始位切割到end位
+</pre>
+
+```py
+text = "Python编程"
+
+# 正向切片
+print(text[:4])     # "Pyth"（前4个字符）
+print(text[2:5])    # "tho"（索引2到4）
+print(text[3:])     # "hon编程"（索引3到结尾）
+
+# 负向索引
+print(text[-3:])    # "n编程"（最后3个字符）
+print(text[:-2])    # "Python"（去掉最后2个字符）
+
+# 带步长
+print(text[::2])    # "Pto编"（每隔2个字符取一个）
+print(text[::-1])   # "程编nohtyP"（反转字符串）
+```
