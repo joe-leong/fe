@@ -346,7 +346,7 @@ if __name__ == "__main__":
         print("日志文件尚未创建")
 ```
 
-<pre style="background:#F0F0F0;padding:20px">
+<pre class='pre'>
 <b>实例中演示的功能</b>
 1. ✅ 正常任务执行和日志记录
 2. ❌ 错误任务执行和完整的错误堆栈记录
@@ -375,7 +375,7 @@ def process_tool_result(
         raise TypeError(f"不支持的类型：{type(result)}")
 ```
 
-<pre style="background:#F0F0F0;padding:20px">
+<pre class="pre">
 [start:end]切片操作符，python中的切割功能，意味着从第start位切割到end位
 冒号前默认0，冒号后默认到末尾，可赋值切割起始位，意味从起始位切割到end位
 </pre>
@@ -399,7 +399,7 @@ print(text[::-1])   # "程编nohtyP"（反转字符串）
 
 # 代码整洁
 
-## 海象运算符（:=）
+## 海象运算符 :=
 
 ```py
 # 场景：在条件中同时赋值和判断
@@ -442,6 +442,58 @@ tool_type = ToolType.SEARCH
 print(tool_type.value)  # "search_engine"
 ```
 
-<pre style="background:#F0F0F0;padding:20px">
+<pre class="pre">
 auto()自动赋值
 </pre>
+
+# 性能优化
+
+## 缓存计算 lru_cache
+
+```py
+from functools import lru_cache
+
+# 相同输入不重复调用
+@lru_cache(maxsize=128)
+def call_llm(prompt: str, temperature: float = 0.7):
+    """相同prompt+temperature只调用一次API"""
+    print(f"实际调用API：{prompt[:20]}...")
+    # 模拟API调用
+    return f"回复：{prompt}"
+
+# 第一次调用（实际调用API）
+result1 = call_llm("你好", 0.7)
+
+# 第二次调用（使用缓存，不会打印）
+result2 = call_llm("你好", 0.7)
+
+# 查看缓存统计
+print(call_llm.cache_info())  # CacheInfo(hits=1, misses=1, maxsize=128, currsize=1)
+```
+
+<pre class="pre">
+lru_cache 是 Python 的一个缓存装饰器，全称是 Least Recently Used (LRU) 缓存。它会自动缓存函数的返回值，避免重复计算。
+</pre>
+
+## 字符串拼接 join
+
+```py
+# 场景：构建大prompt
+parts = ["系统提示", "用户问题", "历史对话", "工具返回"]
+
+# 不好的写法（每次循环创建新字符串）
+prompt = ""
+for part in parts:
+    prompt += part + "\n"
+
+# 好的写法（join一次性拼接）
+prompt = "\n".join(parts)
+
+# 更好的写法（f-string + join）
+prompt = f"""
+系统：{parts[0]}
+用户：{parts[1]}
+历史：{parts[2]}
+工具：{parts[3]}
+"""
+```
